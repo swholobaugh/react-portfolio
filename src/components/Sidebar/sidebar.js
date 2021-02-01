@@ -1,19 +1,21 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
-const drawerWidth = 240;
 
 const useStyles = makeStyles({
     sidebarRoot: {
         display: 'flex',
     },
     sidebarDrawer: {
-        width: drawerWidth,
+        width: '200px',
         flexShrink: 0,
+    },
+    drawerPaper: {
+        width: '200px',
     },
     sidebarItem: {
 
@@ -38,6 +40,7 @@ const Sidebar = () => {
                 className={styleClasses.sidebarDrawer}
                 variant="permanent"
                 anchor="left"
+                classes={{paper: styleClasses.drawerPaper}}
             >
                 <List>
                     {menuItems.map(item => (
