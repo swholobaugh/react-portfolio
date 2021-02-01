@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './Home/home';
 import About from './About/about';
 import Work from './Work/work';
 import Education from './Education/education';
@@ -11,9 +10,6 @@ const Pages = ({ user }) => {
         <Router>
             <Switch>
                 <Route exact path="/">
-                    <Home user={user} />
-                </Route>
-                <Route path="/about">
                     <About user={user} />
                 </Route>
                 <Route path="/education">

@@ -5,8 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
-
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     sidebarRoot: {
         display: 'flex',
     },
@@ -19,12 +18,12 @@ const useStyles = makeStyles({
     },
     sidebarItem: {
 
-    }
-})
+    },
+    toolbar: theme.mixins.toolbar,
+}));
 
 const menuItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
+    { name: 'About', path: '/' },
     { name: 'Projects', path: '/projects' },
     { name: 'Work', path: 'work' },
     { name: 'Education', path: '/education' },
@@ -42,6 +41,7 @@ const Sidebar = () => {
                 anchor="left"
                 classes={{paper: styleClasses.drawerPaper}}
             >
+              <div className={styleClasses.toolbar} />
                 <List>
                     {menuItems.map(item => (
                         <ListItem 

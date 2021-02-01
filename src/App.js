@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Pages from './pages/index';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import theme from './theme';
+
 
 const App = () => {
 
@@ -19,7 +23,10 @@ const App = () => {
   }
 
   return (
-    <Pages user={user} />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Pages user={user} />
+    </ThemeProvider>
   );
 }
 
