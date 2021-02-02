@@ -42,9 +42,6 @@ const Projects = ({ user }) => {
   return (
     <Layout user={user}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <header className={styleClasses.projectHeader}>Projects</header>
-        </Grid>
         {user.projects.map((project, i) => (
           <Grid item xs={12}>
             <Card key={i} className={styleClasses.projectCard}>

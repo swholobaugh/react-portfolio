@@ -53,9 +53,6 @@ const About = ({ user }) => {
     <Layout user={user}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <header className={styleClasses.aboutHeader}>About</header>
-        </Grid>
-        <Grid item xs={12}>
           <Card className={styleClasses.aboutCard}>
             <CardHeader 
               className={styleClasses.cardHeader}

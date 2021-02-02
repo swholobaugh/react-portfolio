@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import Chip from '@material-ui/core/Chip';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const useStyles = makeStyles(theme => ({
     headerRoot: {
@@ -57,6 +58,8 @@ const Header = ({ user }) => {
         className={styleClasses.chip}
         color="primary"
         label="ResumeLink"
+        deleteIcon={<ChevronRightIcon/>}
+        onDelete={() => null}
         component="a"
         href={`https://gitconnected.com/${user.basics.username}/resume`}
         target="_blank"

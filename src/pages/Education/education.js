@@ -29,9 +29,6 @@ const Education = ({ user }) => {
   return (
     <Layout user={user}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <header className={styleClasses.educationHeader}>Education</header>
-        </Grid>
         {user.education.map((education, i) => (
           <Grid item xs={12}>
             <Card key={i}>

@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
-      height: '3.5em'
+      height: '3.75em'
     },
     children: {
         marginTop: '2em',
