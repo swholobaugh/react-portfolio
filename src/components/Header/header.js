@@ -1,14 +1,17 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
 import Chip from '@material-ui/core/Chip';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ArrowForward from '@material-ui/icons/ArrowForward';
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles(theme => ({
     headerRoot: {
         display: 'flex',
         width: '100%'
+    },
+    content: {
+      marginTop: '-1em'
     },
     link: {
         display: 'flex',
@@ -25,7 +28,17 @@ const useStyles = makeStyles(theme => ({
       justifyContent: 'flex-end',
       margin: 'auto',
       marginTop: '1em',
-      marginRight: '1.5em'
+      marginRight: '1.5em',
+      color: 'white'
+    },
+    arrowIcon: {
+      color: 'white'
+    },
+    avatar: {
+      width: theme.spacing(23),
+      height: theme.spacing(22),
+      marginRight: '.75em',
+      marginTop: '.65em',
     }
 }));
 
@@ -38,15 +51,20 @@ const Header = ({ user }) => {
       className={styleClasses.headerRoot}
       isHome={location.pathname === '/'}
     >
-      <div>
-        <h2>{user.basics.name}</h2>
+      <Avatar 
+        className={styleClasses.avatar}
+        src={user.basics.image}
+        variant="rounded"
+      />
+      <div className={styleClasses.content}>
+        <h1>{user.basics.name}</h1>
         <h4>
           <a
-            href={`https://gitconnected.com/${user.basics.username}`}
+            href={user.basics.email}
             target="_blank"
             rel="noreferrer noopener"
-          >   
-            @{user.basics.username}
+          >
+            {user.basics.email}
           </a>
         </h4>
         <p>{user.basics.label}</p>
@@ -58,7 +76,7 @@ const Header = ({ user }) => {
         className={styleClasses.chip}
         color="primary"
         label="ResumeLink"
-        deleteIcon={<ChevronRightIcon/>}
+        deleteIcon={<ArrowForward className={styleClasses.arrowIcon} />}
         onDelete={() => null}
         component="a"
         href={`https://gitconnected.com/${user.basics.username}/resume`}

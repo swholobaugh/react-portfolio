@@ -7,6 +7,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
+import Slide from '@material-ui/core/Slide';
 
 const useStyles = makeStyles(theme => ({
   aboutRoot: {
@@ -20,7 +21,8 @@ const useStyles = makeStyles(theme => ({
   },
   aboutCard: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    
   },
   skillsCard: {
     display: 'flex',
@@ -53,57 +55,78 @@ const About = ({ user }) => {
     <Layout user={user}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Card className={styleClasses.aboutCard}>
-            <CardHeader 
-              className={styleClasses.cardHeader}
-              title={"About Me"}
-            />
-            <Divider className={styleClasses.divider} />
-            <CardContent className={styleClasses.cardContent}>
-              {user.basics.summary}
-            </CardContent>
-          </Card>
+          <Slide
+            direction="right" 
+            in={true}
+            mountOnEnter
+            unmountOnExit
+          >      
+            <Card className={styleClasses.aboutCard}>
+              <CardHeader 
+                className={styleClasses.cardHeader}
+                title={"About Me"}
+              />
+              <Divider className={styleClasses.divider} />
+              <CardContent className={styleClasses.cardContent}>
+                {user.basics.summary}
+              </CardContent>
+            </Card>
+          </Slide>
         </Grid>
         <Grid item xs={12}>
+          <Slide
+            direction="right" 
+            in={true}
+            mountOnEnter
+            unmountOnExit
+          >      
           <Card className={styleClasses.skillsCard}>
             <CardHeader 
               className={styleClasses.cardHeader}
               title={"Skills"}
             />
             <Divider className={styleClasses.divider} />
-            <CardContent className={styleClasses.cardContent}>
-              {user.skills.map(skill => (
-                <Chip 
-                  key={skill.name}
-                  label={skill.name}
-                  color="primary"
-                  variant="outlined"
-                  className={styleClasses.chip}
-                />
-              ))}
-            </CardContent>
-          </Card>
+              <CardContent className={styleClasses.cardContent}>
+                {user.skills.map(skill => (
+                  <Chip 
+                    key={skill.name}
+                    label={skill.name}
+                    color="primary"
+                    variant="outlined"
+                    className={styleClasses.chip}
+                  />
+                ))}
+              </CardContent>
+            </Card>
+          </Slide>
         </Grid>
         <Grid item xs={12}>
-          <Card className={styleClasses.profilesCard}>
-            <CardHeader 
-              className={styleClasses.cardHeader}
-              title={"Profiles"}
-            />
-            <Divider className={styleClasses.divider} />
-            <CardContent className={styleClasses.cardContent}>
-              <ul>
-                    {user.basics.profiles.map((profile, item) => (
-                  <div key={profile.network}>
-                          {item !== 0 && ' | '}
-                    <a href={profile.url} target="_blank" rel="noreferrer noopener">
-                      {profile.network}
-                    </a>
-                  </div>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          <Slide
+            direction="right" 
+            in={true}
+            mountOnEnter
+            unmountOnExit
+          >      
+            <Card className={styleClasses.profilesCard}>
+              <CardHeader 
+                className={styleClasses.cardHeader}
+                title={"Profiles"}
+              />
+              <Divider className={styleClasses.divider} />
+              <CardContent className={styleClasses.cardContent}>
+                <ul>
+                      {user.basics.profiles.map((profile, item) => (
+                    <div key={profile.network}>
+                            {item !== 0 && ' | '}
+                      <a href={profile.url} target="_blank" rel="noreferrer noopener">
+                        {profile.network}
+                      </a>
+                    </div>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </Slide>
         </Grid>
       </Grid>
     </Layout>

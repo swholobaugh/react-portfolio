@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Chip from '@material-ui/core/Chip';
+import Slide from '@material-ui/core/Slide';
 
 const useStyles = makeStyles(theme => ({
   projectRoot: {
@@ -44,25 +45,32 @@ const Projects = ({ user }) => {
       <Grid container spacing={3}>
         {user.projects.map((project, i) => (
           <Grid item xs={12}>
-            <Card key={i} className={styleClasses.projectCard}>
-              <CardHeader
-                className={styleClasses.cardHeader}
-                title={project.name}
-              />
-              <Divider className={styleClasses.divider} />
-              <CardContent>
-                <p>{project.summary}</p>
-                {[...project.languages, ...project.libraries].map((item, j) => (
-                  <Chip 
-                    key={j}
-                    label={item}
-                    color="primary"
-                    variant="outlined"
-                    className={styleClasses.chip}
-                  />
-                ))}
-              </CardContent>
-            </Card>
+            <Slide
+              direction="right" 
+              in={true}
+              mountOnEnter
+              unmountOnExit
+            >      
+              <Card key={i} className={styleClasses.projectCard}>
+                <CardHeader
+                  className={styleClasses.cardHeader}
+                  title={project.name}
+                />
+                <Divider className={styleClasses.divider} />
+                <CardContent>
+                  <p>{project.summary}</p>
+                  {[...project.languages, ...project.libraries].map((item, j) => (
+                    <Chip 
+                      key={j}
+                      label={item}
+                      color="primary"
+                      variant="outlined"
+                      className={styleClasses.chip}
+                    />
+                  ))}
+                </CardContent>
+              </Card>
+            </Slide>
           </Grid>
         ))}
       </Grid>

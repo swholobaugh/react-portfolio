@@ -7,6 +7,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
+import Slide from '@material-ui/core/Slide';
 
 const useStyles = makeStyles(theme => ({
   educationRoot: {
@@ -31,21 +32,28 @@ const Education = ({ user }) => {
       <Grid container spacing={3}>
         {user.education.map((education, i) => (
           <Grid item xs={12}>
-            <Card key={i}>
-              <CardHeader
-                title={education.institution}
-              />
-              <Divider className={styleClasses.divider} />
-              <CardContent>
-                <header>
-                  {education.studyType}, {education.area}
-                </header>
-                <span>
-                  {education.start.year} to {education.end.year}
-                </span>
-              </CardContent>
-              <p>{education.description.replace('\n\n', '\n')}</p>
-            </Card>
+            <Slide
+              direction="right" 
+              in={true}
+              mountOnEnter
+              unmountOnExit
+            >      
+              <Card key={i}>
+                <CardHeader
+                  title={education.institution}
+                />
+                <Divider className={styleClasses.divider} />
+                <CardContent>
+                  <header>
+                    {education.studyType}, {education.area}
+                  </header>
+                  <span>
+                    {education.start.year} to {education.end.year}
+                  </span>
+                </CardContent>
+                <p>{education.description.replace('\n\n', '\n')}</p>
+              </Card>
+            </Slide>
           </Grid>
         ))}
       </Grid>

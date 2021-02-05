@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
         width: '200px',
     },
     sidebarItem: {
-
+      
     },
     toolbar: theme.mixins.toolbar,
 }));
