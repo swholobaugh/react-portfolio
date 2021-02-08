@@ -30,33 +30,33 @@ const menuItems = [
 ];
 
 const Sidebar = () => {
-    const history = useHistory();
-    const styleClasses = useStyles();
+  const history = useHistory();
+  const styleClasses = useStyles();
 
-    return (
-        <div className={styleClasses.sidebarRoot}>
-            <Drawer
-                className={styleClasses.sidebarDrawer}
-                variant="permanent"
-                anchor="left"
-                classes={{paper: styleClasses.drawerPaper}}
+  return (
+    <div className={styleClasses.sidebarRoot}>
+      <Drawer
+        className={styleClasses.sidebarDrawer}
+        variant="permanent"
+        anchor="left"
+        classes={{paper: styleClasses.drawerPaper}}
+      >
+        <div className={styleClasses.toolbar} />
+          <List>
+            {menuItems.map(item => (
+            <ListItem 
+              button
+              key={item.name}
+              className={styleClasses.sidebarItem}
+              onClick={() => history.push(item.path)}
             >
-              <div className={styleClasses.toolbar} />
-                <List>
-                    {menuItems.map(item => (
-                        <ListItem 
-                            button
-                            key={item.name}
-                            className={styleClasses.sidebarItem}
-                            onClick={() => history.push(item.path)}
-                        >
-                            {item.name}
-                        </ListItem>
-                    ))}
-                </List>
-            </Drawer>
-        </div>
-    )
+              {item.name}
+            </ListItem>
+            ))}
+          </List>
+      </Drawer>
+    </div>
+  )
 }
 
 export default Sidebar;

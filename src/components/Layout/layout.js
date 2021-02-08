@@ -1,9 +1,12 @@
 import React from 'react';
 import Header from '../Header/header';
 import Sidebar from '../Sidebar/sidebar';
+import MobileNav from '../MobileNav/mobileNav';
 import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
 import { makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles(theme => ({
     layoutRoot: {
@@ -35,24 +38,46 @@ const useStyles = makeStyles(theme => ({
 
 const Layout = ({ user, children }) => {
   const styleClasses = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
-  return (
-    <div className={styleClasses.layoutRoot} >
-      <AppBar position="fixed" className={styleClasses.appBar} />
-      <Sidebar className={styleClasses.sidebar} />
-      <div className={styleClasses.layoutContent}>
-        <div className={styleClasses.toolbar} />
-        <div className={styleClasses.header}>
-          <Header 
-            user={user} 
-            className={styleClasses.header}
-          />
+  if(matches === false) {
+    return (
+      <div className={styleClasses.layoutRoot} >
+        <AppBar position="fixed" className={styleClasses.appBar} />
+        <Sidebar className={styleClasses.sidebar} />
+        <div className={styleClasses.layoutContent}>
+          <div className={styleClasses.toolbar} />
+          <div className={styleClasses.header}>
+            <Header 
+              user={user} 
+              className={styleClasses.header}
+            />
+          </div>
+          <Divider />
+          <div className={styleClasses.children}>{children}</div>
         </div>
-        <Divider />
-        <div className={styleClasses.children}>{children}</div>
-      </div>
-    </div>
-  )
+      </div>  
+    )
+  } else {
+    return (
+      <div className={styleClasses.layoutRoot} >
+        <MobileNav />
+        <div className={styleClasses.layoutContent}>
+          <div className={styleClasses.toolbar} />
+          <div className={styleClasses.header}>
+            <Header 
+              user={user} 
+              className={styleClasses.header}
+            />
+          </div>
+          <Divider />
+          <div className={styleClasses.children}>{children}</div>
+        </div>
+      </div>  
+    )
+  }
+  
 }
 
 export default Layout;
