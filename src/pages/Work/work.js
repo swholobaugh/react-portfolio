@@ -50,6 +50,11 @@ const Work = ({ user }) => {
                     {work.start.year} to {work.end.year}
                   </span>
                   <p>{work.summary}</p>
+                  <ul>
+                    {work.highlights.map(item => {
+                      return (<li>{item}</li>)
+                    })}
+                  </ul>
                 </CardContent>
               </Card>
             </Slide>
