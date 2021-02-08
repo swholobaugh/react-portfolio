@@ -9,8 +9,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Chip from '@material-ui/core/Chip';
 import Slide from '@material-ui/core/Slide';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import LanguageIcon from '@material-ui/icons/Language';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import IconButton from '@material-ui/core/IconButton';
+
 
 const useStyles = makeStyles(theme => ({
   projectRoot: {
@@ -45,7 +47,8 @@ const useStyles = makeStyles(theme => ({
     color: 'white'
   },
   iconButton: {
-
+    position: 'relative',
+    float: 'right'
   }
 }));
 
@@ -71,12 +74,13 @@ const Projects = ({ user }) => {
                     [project.name,
                     project.url &&   
                       <IconButton
+                        className={styleClasses.iconButton}
                         component="a"
                         href={`https://gitconnected.com/${user.basics.username}/resume`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <ExitToAppIcon/>
+                        <LanguageIcon />
                       </IconButton>,
                     project.githubUrl &&
                       <IconButton 
