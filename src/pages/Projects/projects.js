@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
 const Projects = ({ user }) => {
 
   const styleClasses = useStyles();
-  console.log(user);
+  
   return (
     <Layout user={user}>
       <Grid container spacing={3}>
@@ -75,7 +75,7 @@ const Projects = ({ user }) => {
                       <IconButton
                         className={styleClasses.iconButton}
                         component="a"
-                        href={project.url}
+                        href={project.website}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
